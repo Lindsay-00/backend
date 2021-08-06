@@ -1,0 +1,2 @@
+class WatchLaterListsController < ApplicationController
+end

@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_08_06_185735) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "animes", force: :cascade do |t|
     t.string "name"
     t.string "img_url"
@@ -23,8 +26,8 @@ ActiveRecord::Schema.define(version: 2021_08_06_185735) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
-    t.integer "user_id", null: false
-    t.integer "anime_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "anime_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["anime_id"], name: "index_comments_on_anime_id"
@@ -40,8 +43,8 @@ ActiveRecord::Schema.define(version: 2021_08_06_185735) do
   end
 
   create_table "watch_later_lists", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "anime_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "anime_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["anime_id"], name: "index_watch_later_lists_on_anime_id"
